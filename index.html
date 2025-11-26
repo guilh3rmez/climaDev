@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClimaDev 🌦️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%); /* Céu padrão */
+            color: white;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.5s ease; /* Suaviza a troca de cor */
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2); /* Vidro fosco */
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 { margin-top: 0; font-size: 2rem; }
+
+        .busca { display: flex; gap: 10px; margin-bottom: 20px; }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 10px;
+            background: #fff;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { background: #eee; }
+
+        /* Área de Resultados (Começa oculta) */
+        .info-clima { display: none; }
+        .cidade { font-size: 1.5rem; margin: 10px 0; }
+        .temp { font-size: 4rem; font-weight: bold; margin: 0; }
+        .descricao { text-transform: capitalize; font-size: 1.2rem; margin-bottom: 20px; }
+
+        .detalhes {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0,0,0,0.1);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .erro { color: #ff4d4d; display: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="busca">
+            <input type="text" id="input-cidade" placeholder="Digite uma cidade...">
+            <button onclick="buscarCidade()">🔍</button>
+        </div>
+
+        <p id="msg-erro" class="erro">Cidade não encontrada!</p>
+
+        <div id="info-clima" class="info-clima">
+            <h2 class="cidade" id="cidade">São Paulo, BR</h2>
+            <p class="temp" id="temperatura">25°C</p>
+            <p class="descricao" id="descricao">Céu Limpo</p>
+            
+            <div class="detalhes">
+                <div>
+                    <span>💨 Vento</span>
+                    <strong id="vento">10 km/h</strong>
+                </div>
+                <div>
+                    <span>💧 Umidade</span>
+                    <strong id="umidade">50%</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
